@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CO₂ Prediction Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #d2f8d2, #a8e6a3); /* Soft green */
+      padding: 50px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      max-width: 1000px; /* Increased width */
+      width: 90%;
+      margin: auto;
+    }
+    h1 {
+      color: #2e7d32;
+      font-size: 40px; /* Slightly bigger */
+      margin-bottom: 20px;
+    }
+    p {
+      color: #555;
+      font-size: 20px;
+      margin: 10px 0 20px 0;
+    }
+    img {
+      width: 500px; /* Increased image size */
+      max-width: 100%;
+      height: auto;
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add slight shadow to image */
+    }
+    a {
+      display: inline-block;
+      padding: 15px 35px;
+      margin: 10px;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    a:hover {
+      background: #45a049;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>CO₂ Emission Predictor</h1>
+
+    <img src="static/homepage.png" alt="CO₂ Emissions and Vehicles" />
+
+    <p><em>"Reducing carbon footprint today ensures a sustainable tomorrow."</em></p>
+
+    <p>Carbon footprint refers to the total greenhouse gas emissions caused directly or indirectly by an individual, organization, event, or product. Understanding and reducing it is vital for our planet's future.</p>
+
+    <a href="/prediction">Prediction via CSV</a>
+    <a href="/calculate">Manual CO₂ Calculator</a>
+  </div>
+
+</body>
+</html>

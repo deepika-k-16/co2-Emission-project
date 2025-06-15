@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CO₂ Emission Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d9f0d2;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p.mandatory {
+      text-align: center;
+      color: red;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
+      text-align: center;
+    }
+    .error {
+      color: red;
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    function handleSubmit() {
+      // Hide the predict button after form submission
+      document.getElementById("predictButton").style.display = "none";
+
+      // Allow form to submit normally
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>CO₂ Emission Calculator</h2>
+  <p class="mandatory">Fields marked with * are mandatory.</p>
+
+  <form id="calcForm" method="POST" onsubmit="return handleSubmit();">
+    <label>Engine Size (L) *</label>
+    <input type="text" name="feature1" required>
+
+    <label>Cylinders *</label>
+    <input type="text" name="feature2" required>
+
+    <label>City Fuel Consumption (L/100 km) *</label>
+    <input type="text" name="feature3" required>
+
+    <label>Highway Fuel Consumption (L/100 km) *</label>
+    <input type="text" name="feature4" required>
+
+    <label>Combined Fuel Consumption (L/100 km) *</label>
+    <input type="text" name="feature5" required>
+
+    <label>Combined Fuel Economy (mpg) *</label>
+    <input type="text" name="feature6" required>
+
+    <label>Make (e.g., Toyota) *</label>
+    <input type="text" name="feature7" required>
+
+    <label>Model (e.g., Corolla) *</label>
+    <input type="text" name="feature8" required>
+
+    <label>Fuel Type *</label>
+    <select name="feature9" required>
+      <option value="">-- Select Fuel Type --</option>
+      <option value="Gasoline">Gasoline</option>
+      <option value="Diesel">Diesel</option>
+      <option value="Ethanol">Ethanol</option>
+      <option value="Natural Gas">Natural Gas</option>
+    </select>
+
+    <label>Vehicle Class (e.g., SUV) *</label>
+    <input type="text" name="vehicle_class" required>
+
+    <button id="predictButton" type="submit">Predict</button>
+  </form>
+
+  {% if prediction %}
+    <div id="result" class="result">
+      Predicted CO₂ Emission: {{ prediction }}
+    </div>
+  {% endif %}
+
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+</div>
+
+</body>
+</html>

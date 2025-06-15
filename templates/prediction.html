@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSV CO₂ Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #a8e063, #56ab2f); /* Light greenish background */
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+    }
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    .instructions {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .instructions h3 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+    .instructions ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .instructions ul li {
+      margin-bottom: 8px;
+      color: #333;
+    }
+    a.sample-link {
+      color: #2e7d32;
+      text-decoration: underline;
+    }
+    input[type="file"] {
+      margin: 20px 0;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .download-links a {
+      display: block;
+      margin-top: 10px;
+      color: #2e7d32;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .download-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload CSV for CO₂ Prediction</h2>
+    <div class="instructions">
+      <h3>📄 Instructions:</h3>
+      <ul>
+        <li>Upload a CSV file with vehicle/environmental data.</li>
+        <li>Click on Predict to generate CO₂ emission predictions.</li>
+        <li>Click Generate Report to view detailed report.</li>
+        <li>Download predicted CSV or report from the generated page.</li>
+        <li>📬 Refer to the <a class="sample-link" href="static/SAMPLE_TEMPLATE.csv" download>sample template</a>.</li>
+      </ul>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="csv_file" required />
+      <br/>
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if csv_file and report_file %}
+    <div class="download-links">
+      <a href="{{ url_for('download_file', filename=csv_file) }}">Download Predicted CSV</a>
+      <a href="{{ url_for('download_file', filename=report_file) }}">Download PDF Report</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
